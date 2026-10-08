@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuno Andrade da Rocha — Senior QA Engineer</title>
+
+    <style>
+        :root {
+            --ink: #17202a;
+            --muted: #667085;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --line: #e5e7eb;
+            --bg: #f5f7fa;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            line-height: 1.55;
+        }
+
+        .page {
+            width: 210mm;
+            max-width: 100%;
+            margin: 32px auto;
+            background: var(--white);
+            padding: 42px 48px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Header */
+
+        header {
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 24px;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 34px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .headline {
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .contact a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            background: var(--line);
+            flex: 1;
+        }
+
+        .profile {
+            font-size: 14px;
+            color: #344054;
+            max-width: 900px;
+        }
+
+        /* Experience */
+
+        .job {
+            margin-bottom: 26px;
+            break-inside: avoid;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        .company {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .dates {
+            font-size: 12px;
+            color: var(--muted);
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .role {
+            margin-top: 2px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .job ul {
+            margin: 9px 0 0;
+            padding-left: 19px;
+        }
+
+        .job li {
+            margin-bottom: 5px;
+            font-size: 13.2px;
+            color: #344054;
+        }
+
+        /* Skills */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .skill-card {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 13px 15px;
+            break-inside: avoid;
+        }
+
+        .skill-name {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            color: var(--ink);
+            margin-bottom: 5px;
+        }
+
+        .skill-list {
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+
+        /* Education */
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            margin-bottom: 14px;
+            break-inside: avoid;
+        }
+
+        .degree {
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+
+        .institution {
+            font-size: 12.5px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .education-year {
+            font-size: 12px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid var(--line);
+            margin-top: 35px;
+            padding-top: 12px;
+            font-size: 11px;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Print */
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0;
+                padding: 32px 40px;
+                box-shadow: none;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            .job,
+            .skill-card,
+            .education-item {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                margin: 0;
+                padding: 28px 22px;
+            }
+
+            .job-header,
+            .education-item {
+                display: block;
+            }
+
+            .dates,
+            .education-year {
+                display: block;
+                margin-top: 3px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .name {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<main class="page">
+
+    <!-- HEADER -->
+
+    <header>
+        <h1 class="name">Nuno Andrade da Rocha</h1>
+
+        <div class="headline">
+            Senior QA Engineer · Quality Engineering · Automation · AppSec · AI-Assisted Engineering
+        </div>
+
+        <div class="contact">
+            <span>Braga, Portugal</span>
+            <span>
+                <a href="mailto:nunoandraderocha@gmail.com">
+                    nunoandraderocha@gmail.com
+                </a>
+            </span>
+            <span>
+                <a href="https://linkedin.com/in/nunoandraderocha">
+                    linkedin.com/in/nunoandraderocha
+                </a>
+            </span>
+        </div>
+    </header>
+
+
+    <!-- PROFILE -->
+
+    <section>
+        <h2 class="section-title">Profile</h2>
+
+        <p class="profile">
+            Senior QA Engineer and software engineering professional with 15+ years
+            of experience across software development, quality engineering,
+            application security and process improvement. Six years at Checkmarx
+            spanning application-facing development, QA engineering, AppSec quality
+            assurance and senior QA engineering.
+            <br><br>
+            Strong track record of turning manual and fragmented quality activities
+            into repeatable, automated and measurable engineering processes.
+            Recent hands-on focus includes Cypress, Playwright, Go, CI/CD automation,
+            and AI-assisted engineering with Claude Code and OpenAI Codex.
+        </p>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+
+    <section>
+        <h2 class="section-title">Professional Experience</h2>
+
+
+        <!-- CHECKMARX -->
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">Checkmarx</div>
+                    <div class="role">Senior QA Engineer</div>
+                </div>
+
+                <div class="dates">2020 – Present</div>
+            </div>
+
+            <ul>
+                <li>
+                    Drive continuous quality improvement and automation across
+                    the R&amp;D organization.
+                </li>
+
+                <li>
+                    Build and maintain automated quality solutions using
+                    <strong>Cypress, Playwright and Go</strong>, improving validation
+                    coverage, repeatability and delivery confidence.
+                </li>
+
+                <li>
+                    Develop internal engineering tools and reusable skills using
+                    <strong>Claude Code and OpenAI Codex</strong>, applying
+                    AI-assisted development to automate workflows and accelerate
+                    engineering tasks.
+                </li>
+
+                <li>
+                    Partner with development and QA teams to identify process gaps
+                    and turn recurring quality problems into reusable engineering
+                    solutions.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">Checkmarx</div>
+                    <div class="role">AppSec Quality Engineer / Quality Assurance</div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    Performed detection, analysis and triage of SAST vulnerabilities
+                    as part of Application Security engineering activities.
+                </li>
+
+                <li>
+                    Defined continuous-improvement processes focused on team quality,
+                    efficiency and effectiveness.
+                </li>
+
+                <li>
+                    Designed onboarding, ramp-up and training plans for AppSec
+                    engineers and supported the adoption of consistent quality
+                    practices.
+                </li>
+
+                <li>
+                    Implemented automation and quality tooling to streamline AppSec
+                    activities and improve repeatability.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">Checkmarx</div>
+                    <div class="role">QA Engineer</div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    Planned and drove automated testing strategies using
+                    <strong>Selenium</strong>.
+                </li>
+
+                <li>
+                    Evangelized BDD practices and specification of tests using
+                    <strong>Cucumber</strong>.
+                </li>
+
+                <li>
+                    Implemented automated validation pipelines integrated with
+                    CI/CD workflows.
+                </li>
+
+                <li>
+                    Developed data maps and supporting data structures to enable
+                    reliable automated testing.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">Checkmarx</div>
+                    <div class="role">Software Developer — Application-Facing Team</div>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    Developed and maintained tooling supporting Checkmarx CxSAST,
+                    the company’s core SAST platform.
+                </li>
+
+                <li>
+                    Built a centralized logging solution with ELK support to improve
+                    observability and troubleshooting.
+                </li>
+
+                <li>
+                    Developed a data-archiving tool to improve database performance
+                    and operational scalability.
+                </li>
+
+                <li>
+                    Developed a scanning-task scheduling tool supporting the core
+                    scanning platform.
+                </li>
+
+                <li>
+                    Built a reporting tool capable of generating reports from
+                    templates and JSON/XML data, including PDF output.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <!-- PRIMEIT -->
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">PrimeIT</div>
+                    <div class="role">Computer Systems Designer &amp; Analyst</div>
+                </div>
+
+                <div class="dates">09/2015 – 2020</div>
+            </div>
+
+            <ul>
+                <li>
+                    Full-stack development of web solutions using PHP and SQL,
+                    including integration with external applications through
+                    web services.
+                </li>
+
+                <li>
+                    Responsible for analysis, solution architecture and web
+                    development.
+                </li>
+
+                <li>
+                    Technologies included PHP, JavaScript, HTML/CSS, AJAX,
+                    SOAP, MySQL and Git.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <!-- INCREASETIME -->
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">IncreaseTime</div>
+                    <div class="role">Web Developer</div>
+                </div>
+
+                <div class="dates">05/2014 – 09/2015</div>
+            </div>
+
+            <ul>
+                <li>
+                    Developed web applications and tools supporting quality of life
+                    and remote monitoring of elderly people.
+                </li>
+
+                <li>
+                    Supported the company’s internationalization process and
+                    supervised internships and academic projects.
+                </li>
+
+                <li>
+                    Technologies included .NET, AngularJS, Bootstrap and SQL Server.
+                </li>
+            </ul>
+
+        </article>
+
+
+        <!-- UNIVERSITY -->
+
+        <article class="job">
+
+            <div class="job-header">
+                <div>
+                    <div class="company">
+                        University of Porto — Department of Health Information
+                        and Decision Sciences
+                    </div>
+
+                    <div class="role">
+                        Software Analyst / Designer &amp; Project Manager
+                    </div>
+                </div>
+
+                <div class="dates">03/2011 – 04/2014</div>
+            </div>
+
+            <ul>
+                <li>
+                    Managed and planned software development and maintenance projects.
+                </li>
+
+                <li>
+                    Developed clinical data and hospital-indicator systems using
+                    PHP, MySQL/Oracle, GIS, REST, XML and openEHR.
+                </li>
+
+                <li>
+                    Developed and maintained healthcare applications supporting
+                    clinical specialties and hospital management.
+                </li>
+
+                <li>
+                    Worked on data quality, performance indicators and data-mining
+                    solutions for healthcare organizations.
+                </li>
+            </ul>
+
+        </article>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section>
+        <h2 class="section-title">Core Skills</h2>
+
+        <div class="skills">
+
+            <div class="skill-card">
+                <div class="skill-name">Quality Engineering</div>
+                <div class="skill-list">
+                    Test Automation · QA Strategy · Continuous Improvement ·
+                    CI/CD Validation · Cypress · Playwright · BDD · Cucumber ·
+                    Selenium · Test Data Management
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-name">Application Security</div>
+                <div class="skill-list">
+                    SAST · Vulnerability Detection &amp; Triage ·
+                    AppSec Quality Processes · Security Engineering Enablement
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-name">Software Engineering</div>
+                <div class="skill-list">
+                    Go · PHP · JavaScript · HTML/CSS · SQL · MySQL · Oracle ·
+                    REST · XML · Web Services · Git
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-name">AI &amp; Developer Productivity</div>
+                <div class="skill-list">
+                    Claude Code · OpenAI Codex · AI-Assisted Software Development ·
+                    Reusable Skills · Engineering Automation
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-name">Tools &amp; Platforms</div>
+                <div class="skill-list">
+                    Cypress · Playwright · Selenium · Cucumber · Go · ELK ·
+                    CI/CD Pipelines · JSON/XML/PDF Reporting · Data-Driven Testing
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-name">Ways of Working</div>
+                <div class="skill-list">
+                    Agile · Scrum · Kanban · AI-Assisted Development ·
+                    Technical Training · Team Ramp-up · Process Design ·
+                    Cross-functional Collaboration
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- LANGUAGES -->
+
+    <section>
+        <h2 class="section-title">Languages</h2>
+
+        <p class="profile">
+            <strong>Portuguese</strong> — Native
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            <strong>English</strong> — C2
+        </p>
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section>
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-item">
+            <div>
+                <div class="degree">
+                    MSc in Computer Engineering — Graphic Systems and Multimedia
+                </div>
+                <div class="institution">
+                    ISEP — Instituto Superior de Engenharia do Porto
+                </div>
+            </div>
+
+            <div class="education-year">2011</div>
+        </div>
+
+
+        <div class="education-item">
+            <div>
+                <div class="degree">
+                    BSc in Computer Engineering
+                </div>
+                <div class="institution">
+                    ISEP — Instituto Superior de Engenharia do Porto
+                </div>
+            </div>
+
+            <div class="education-year">2007 – 2011</div>
+        </div>
+
+
+        <div class="education-item">
+            <div>
+                <div class="degree">
+                    Scrum for Agile Project Management
+                </div>
+                <div class="institution">
+                    ISEP
+                </div>
+            </div>
+
+            <div class="education-year">2019</div>
+        </div>
+
+    </section>
+
+
+    <!-- EARLIER EXPERIENCE -->
+
+    <section>
+        <h2 class="section-title">Earlier Technical Experience</h2>
+
+        <p class="profile">
+            Earlier experience includes full-stack web development, healthcare
+            information systems, clinical data platforms, hospital performance
+            indicators, data quality and data-mining solutions. Projects included
+            PHP/Oracle/MySQL systems, openEHR and REST/XML integrations,
+            GIS-based applications and web platforms.
+        </p>
+    </section>
+
+
+    <footer>
+        <span>Nuno Andrade da Rocha</span>
+        <span>Senior QA Engineer</span>
+    </footer>
+
+</main>
+
+</body>
+</html>
